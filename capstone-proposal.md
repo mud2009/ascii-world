@@ -18,6 +18,7 @@ I would like to try hosting the site in some capacity, additionally I would like
 
 What additional tools, frameworks, libraries, APIs, or other resources will these additional features require?
 
+For the stretch goal of the automated captions, I will have to learn how to use Google's cloud vision API.
 
 Is there anything else you'd like your instructor to know?
 
