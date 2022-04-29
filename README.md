@@ -6,3 +6,4 @@
 * 11:00: Watching tutorial on uploading files
 * 1:00: Make notes on plan/plannig project.
 * 1:45: Watch tutorial on Firebase
+* 2:45: Work on component tree
