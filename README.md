@@ -7,6 +7,7 @@
 * 1:00: Make notes on plan/plannig project.
 * 1:45: Watch tutorials on Firebase
 * 2:45: Work on component tree
+* 3:00: Set up base components of site.
 
 ### Provisional Component Tree Diagram
 ![Tree component diagram](./src/img/AsciiWorldDiagram.jpg)
