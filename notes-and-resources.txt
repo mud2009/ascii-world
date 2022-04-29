@@ -20,3 +20,7 @@ https://www.geeksforgeeks.org/file-uploading-in-react-js/
 https://stackoverflow.com/questions/43692479/how-to-upload-an-image-in-react-js
 
 https://www.youtube.com/watch?v=Y5osPpZpxdU
+
+https://www.youtube.com/watch?v=jCY6DH8F4oc
+
+https://www.youtube.com/watch?v=PKwu15ldZ7k
