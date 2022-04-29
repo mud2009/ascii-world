@@ -1,3 +1,20 @@
+-need to look into image processing, uploading, most likely will need to use react, whatever that means
+
+-break image down into grid based on inputted resolution (varies based on 	font or character size). app then takes each individual grid, takes average of contrast and color, then pushes a character with a color that reflects those values to an "image" array of characters. prints that array to the dom
+
+-stretch would be turning it into a social media site with comments, user authentication, sharing, etc
+
+-stretch try using  Azure's Computer Vision API to provide ai generated captions to accompany the ascii images
+
+-one to many relationship between users and posts , posts would be able to just be strings that are then formatted on the view appropriately
+
+-look into uploading images/alternatively could save to local, then 
+
+https://sourceforge.net/software/product/Azure-Computer-Vision/alternatives
+
+https://cloud.google.com/vision google's api
+
+
 https://www.geeksforgeeks.org/file-uploading-in-react-js/
 
 https://stackoverflow.com/questions/43692479/how-to-upload-an-image-in-react-js
