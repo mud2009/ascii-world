@@ -5,5 +5,8 @@
 * 10:15: Research uploading images in React apps
 * 11:00: Watching tutorial on uploading files
 * 1:00: Make notes on plan/plannig project.
-* 1:45: Watch tutorial on Firebase
+* 1:45: Watch tutorials on Firebase
 * 2:45: Work on component tree
+
+### Provisional Component Tree Diagram
+![Tree component diagram](./src/img/AsciiWorldDiagram.jpg)
