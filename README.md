@@ -8,6 +8,7 @@
 * 1:45: Watch tutorials on Firebase
 * 2:45: Work on component tree
 * 3:00: Set up base components of site.
+* 4:00: Research tutorials on converting images to ASCII.
 
 ### Provisional Component Tree Diagram
 ![Tree component diagram](./src/img/AsciiWorldDiagram.jpg)
