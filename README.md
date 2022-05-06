@@ -30,7 +30,7 @@ This React web application allows users to upload and convert images to an ASCII
 * None so far.
 
 ## Research & Planning Log
-### Friday, 04/29
+### Friday, 4/29
 * 8:20: Initialize project
 * 8:40: Research and write proposal
 * 10:15: Research uploading images in React apps
@@ -40,6 +40,8 @@ This React web application allows users to upload and convert images to an ASCII
 * 2:45: Work on component tree
 * 3:00: Set up base components of site.
 * 4:00: Research tutorials on converting images to ASCII.
+
+### Friday, 5/6
 
 ## Provisional Component Tree Diagram
 ![Tree component diagram](./src/img/AsciiWorldDiagram.jpg)
