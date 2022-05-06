@@ -1,6 +1,8 @@
 import React from 'react'
 import UploadImage from "./UploadImage";
 import PostList from "./PostList";
+import PropTypes from "prop-types";
+import { withFirestore } from 'react-redux-firebase'
 
 class FeedControl extends React.Component{
   constructor(props) {

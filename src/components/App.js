@@ -1,7 +1,8 @@
 import React from "react";
-import Header from "./Header";
-import Navbar from "./Navbar";
+// import Header from "./Header";
+// import Navbar from "./Navbar";
 import FeedControl from "./FeedControl";
+
 
 function App() {
   return (
