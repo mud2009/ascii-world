@@ -1,38 +1,24 @@
-import React from 'react'
+import React, {useState} from 'react'
 import UploadImage from "./UploadImage";
 import PostList from "./PostList";
-import PropTypes from "prop-types";
-import { withFirestore } from 'react-redux-firebase'
 
-class FeedControl extends React.Component{
-  constructor(props) {
-    super(props);
-    this.state = {
-      uploadVisible: false,
-    };
-  }
+export default function FeedControl(){
 
-  render(){
-    let buttonText = null;
-    let currentlyVisibleState = null;
+    let [ uploadVisible, setUploadVisible] = useState(false)
 
-    if (this.state.uploadVisible) {
-      currentlyVisibleState = <UploadImage />;
-      buttonText = "Return to Feed";
+    if (uploadVisible) {
+      return(
+        <div>
+          <UploadImage/>
+          <button onClick={() => setUploadVisible(!uploadVisible)}>Return to feed</button>
+        </div>
+      )
     } else {
-      currentlyVisibleState = (
-        <PostList/>
-      );
-      buttonText = "Upload Image";
-    }
-
-    return(
-      <div>
-        {currentlyVisibleState}
-        <button>{buttonText}</button>
-      </div>
-    )
+      return(
+        <div>
+          <PostList/>
+          <button onClick={() => setUploadVisible(!uploadVisible)}>Upload Image</button>
+        </div>
+      )
   }
 }
-
-export default FeedControl;

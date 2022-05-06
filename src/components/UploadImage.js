@@ -1,9 +1,28 @@
-import { getStorage, ref, uploadBytes } from "firebase/storage";
+import React, { useState } from 'react'
+import {storage} from '../firebase';
 
-const storage = getStorage();
-const storageRef = ref(storage, 'some-child');
+export default function UploadImage() {
+  const [file, setFile] = useState(null);
 
-// 'file' comes from the Blob or File API
-uploadBytes(storageRef, file).then((snapshot) => {
-  console.log('Uploaded a blob or file!');
-});
+  function handleChange(e) {
+    if (e.target.files[0])
+        setFile(e.target.files[0]);
+  }
+
+  function handleUpload(e) {
+    e.preventDefault();
+    const path = `/images/${file.name}`;
+    const ref = storage.ref(path);
+    ref.put(file);
+    setFile(null);
+  }
+    return (
+      <div>
+        <form onSubmit={handleUpload}>
+          <input type="file" onChange={handleChange} />
+          <button disabled={!file}>upload to firebase</button>
+        </form>
+      </div>
+    );
+}
+
