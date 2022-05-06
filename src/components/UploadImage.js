@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {storage} from '../firebase';
+import {firebase, storage, db} from '../firebase';
 
 export default function UploadImage() {
   const [file, setFile] = useState(null);
@@ -17,7 +17,8 @@ export default function UploadImage() {
     const path = `/images/${file.name}`;
     const ref = storage.ref(path);
     ref.put(file)
-      .then(snapshot => setButtonText("Uploaded!"));
+      .then(snapshot => setButtonText("Uploaded!"))
+      .then(snapshot => db.collection("images").add({imageName: `${file.name}`, timestamp: `${firebase.firestore.FieldValue.serverTimestamp}`}));
     setFile(null);
   }
     return (
