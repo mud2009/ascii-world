@@ -3,24 +3,28 @@ import {storage} from '../firebase';
 
 export default function UploadImage() {
   const [file, setFile] = useState(null);
+  const [buttonText, setButtonText ] = useState("Upload Image");
 
   function handleChange(e) {
-    if (e.target.files[0])
-        setFile(e.target.files[0]);
+    if (e.target.files[0]){
+      setFile(e.target.files[0])
+      setButtonText("Upload Image")
+    }
   }
 
   function handleUpload(e) {
     e.preventDefault();
     const path = `/images/${file.name}`;
     const ref = storage.ref(path);
-    ref.put(file);
+    ref.put(file)
+      .then(snapshot => setButtonText("Uploaded!"));
     setFile(null);
   }
     return (
       <div>
         <form onSubmit={handleUpload}>
           <input type="file" onChange={handleChange} />
-          <button disabled={!file}>upload to firebase</button>
+          <button disabled={!file}>{buttonText}</button>
         </form>
       </div>
     );
