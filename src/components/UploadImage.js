@@ -4,6 +4,7 @@ import {firebase, storage, db} from '../firebase';
 export default function UploadImage() {
   const [file, setFile] = useState(null);
   const [buttonText, setButtonText ] = useState("Upload Image");
+  const timestamp = Date.now()
 
   function handleChange(e) {
     if (e.target.files[0]){
@@ -18,7 +19,7 @@ export default function UploadImage() {
     const ref = storage.ref(path);
     ref.put(file)
       .then(snapshot => setButtonText("Uploaded!"))
-      .then(snapshot => db.collection("images").add({imageName: `${file.name}`, timestamp: `${firebase.firestore.FieldValue.serverTimestamp}`}));
+      .then(snapshot => db.collection("images").add({imageName: `${file.name}`, timestamp: `${timestamp}`}));
     setFile(null);
   }
     return (
