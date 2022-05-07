@@ -47,7 +47,8 @@ This React web application allows users to upload and convert images to an ASCII
 10:00: Work on uploading images from site
 1:00: Work on displaying images
 2:00: Implement firestore to track information of images in cloud storage.
-3:00: 
+3:00: Add redux
+4:00: work on displaying images
 
 ## Provisional Component Tree Diagram
 ![Tree component diagram](./src/img/AsciiWorldDiagram.jpg)
