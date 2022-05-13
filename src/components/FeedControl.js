@@ -31,7 +31,7 @@ export default function FeedControl() {
       return(
         <React.Fragment>
           <UploadImage/>
-          <button onClick={handleClick}>Return to feed</button>
+          <Button className="mb-3" onClick={handleClick}>Return to feed</Button>
         </React.Fragment>
   
       )
@@ -39,7 +39,7 @@ export default function FeedControl() {
       return(
         <React.Fragment>
           <PostList/>
-          <button onClick={handleClick}>Upload image</button>
+          <Button className="mb-3" onClick={handleClick}>Upload image</Button>
         </React.Fragment>
       )
     }  

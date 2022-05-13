@@ -23,9 +23,9 @@ function Post(props){
   });
   
   return(
-    <Card>
+    <Card className="image-post mb-3">
       <Card.Body>
-        <img id={`myimg${props.imageName}`} alt={`${props.imageName}`}/>
+        <img className="center-block" id={`myimg${props.imageName}`} alt={`${props.imageName}`}/>
         <h3>Name: {props.imageName} - Time: {props.timestamp}</h3>
       </Card.Body>
     </Card>

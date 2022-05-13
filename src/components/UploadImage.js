@@ -4,7 +4,7 @@ import {storage, db} from '../firebase';
 export default function UploadImage() {
   const [file, setFile] = useState(null);
   const [buttonText, setButtonText ] = useState("Upload Image");
-  const timestamp = Date.now()
+  const timestamp = Date.now();
 
   function handleChange(e) {
     if (e.target.files[0]){
@@ -18,8 +18,8 @@ export default function UploadImage() {
     const path = `/images/${file.name}`;
     const ref = storage.ref(path);
     ref.put(file)
-      .then(snapshot => setButtonText("Uploaded!"))
-      .then(snapshot => db.collection("posts").add({imageName: `${file.name}`, timestamp: `${timestamp}`}));
+      .then(() => setButtonText("Uploaded!"))
+      .then(() => db.collection("posts").add({imageName: `${file.name}`, timestamp: `${timestamp}`}));
     setFile(null);
   }
     return (

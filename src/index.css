@@ -20,6 +20,11 @@ code {
   padding-bottom: 2px !important;
 }
 
+.image-post{
+  display: flex;
+  justify-content: center;
+}
+
 img{
   max-width: 500px;
 }
