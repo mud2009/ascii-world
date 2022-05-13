@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { storage } from "../firebase"
+import { Card } from "react-bootstrap"
 
 function Post(props){
   var pathReference = storage.ref(`images/${props.imageName}`);
@@ -22,10 +23,12 @@ function Post(props){
   });
   
   return(
-    <React.Fragment>
-      <img id={`myimg${props.imageName}`} alt={`${props.imageName}`}/>
-      <h3>Name: {props.imageName} - Time: {props.timestamp}</h3>
-    </React.Fragment>
+    <Card>
+      <Card.Body>
+        <img id={`myimg${props.imageName}`} alt={`${props.imageName}`}/>
+        <h3>Name: {props.imageName} - Time: {props.timestamp}</h3>
+      </Card.Body>
+    </Card>
   )
 }
 
