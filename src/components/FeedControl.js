@@ -1,52 +1,47 @@
+import React, { useState } from "react";
+import { Card, Button, Alert } from "react-bootstrap";
+import { useAuth } from "../contexts/AuthContext";
+import { Link, useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 import UploadImage from "./UploadImage";
 import PostList from "./PostList";
-import { connect } from 'react-redux';
-import { withFirestore } from 'react-redux-firebase'
-import React from "react";
-import PropTypes from "prop-types";
 
-class FeedControl extends React.Component{
-  constructor(props) {
-    super(props);
-    this.state = {
-      uploadVisible: false
-    };
+export default function FeedControl() {
+  const [ uploadVisible, setUploadVisible ] = useState(false)
+  const { currentUser } = useAuth();
+  
+  function handleClick(){
+    setUploadVisible(!uploadVisible)
   }
-
-  handleClick = () => {
-    this.setState(prevState => ({
-      uploadVisible: !prevState.uploadVisible
-    }))
-  }
-
-  render(){
-    let currentlyVisibleState = null;
-    let buttonText = null;
-    if (this.state.uploadVisible){
-      currentlyVisibleState = <UploadImage/>
-      buttonText="Return to feed"
-    } else {
-      currentlyVisibleState = <PostList postList={this.props.mainPostList}/>
-      buttonText="Upload image"
-    }
-    return(
-      <React.Fragment>
-        {currentlyVisibleState}
-        <button onClick={this.handleClick}>{buttonText}</button>
-      </React.Fragment>
+  if(!currentUser){
+    return (
+      <>
+        <Card>
+          <Card.Body>
+            <h2 className="text-center mb-4">Profile</h2>
+            <Link className='btn btn-primary w-100 mt-3' to="/login">Log In</Link>
+          </Card.Body>
+        </Card>
+      </>
+  
     )
+
+  } else {
+    if (uploadVisible){
+      return(
+        <React.Fragment>
+          <UploadImage/>
+          <button onClick={handleClick}>Return to feed</button>
+        </React.Fragment>
+  
+      )
+    } else {
+      return(
+        <React.Fragment>
+          <PostList/>
+          <button onClick={handleClick}>Upload image</button>
+        </React.Fragment>
+      )
+    }  
   }
 }
-
-FeedControl.propTypes = {
-  mainPostList: PropTypes.object
-}
-const mapStateToProps = state => {
-  return {
-    mainPostList: state,
-  }
-}
-
-FeedControl = connect(mapStateToProps)(FeedControl)
-
-export default withFirestore(FeedControl)
