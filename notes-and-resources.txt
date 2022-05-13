@@ -28,3 +28,5 @@ https://www.youtube.com/watch?v=PKwu15ldZ7k
 https://github.com/RameshAditya/asciify - python script for converting ascii
 
 https://www.youtube.com/watch?v=HeT-5RZgEQY
+
+https://reactnative.dev/docs/0.65/environment-setup -- emulator for react native
