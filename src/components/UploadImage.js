@@ -20,10 +20,10 @@ export default function UploadImage() {
     const charLength = ASCIICharacters.length;
     const interval = charLength / 256;
 
-    const convertToGrey = async (colorImage) => {
-      const bwImg = colorImage.gamma().greyscale();
-      return bwImg
-    }
+    // const convertToGrey = async (colorImage) => {
+    //   const bwImg =  colorImage.gamma().greyscale();
+    //   return bwImg
+    // }
     const resize = async (bw, newWidth = 500) => {
       const blackAndWhite = await bw;
       const size = await blackAndWhite.metadata();
@@ -42,7 +42,7 @@ export default function UploadImage() {
       return characters;
     }
     const main = async (newWidth = 500) => {
-      const newImgData = await pixelToASCII(resize(convertToGrey(input)));
+      const newImgData = await pixelToASCII(resize(input));
       const pixels = newImgData.length;
       let ASCII = "";
       for (let i = 0; i < pixels; i += newWidth){

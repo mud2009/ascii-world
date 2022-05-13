@@ -10,6 +10,8 @@
 
 -look into uploading images/alternatively could save to local, then 
 
+-look into edge case handling for file uploads
+
 https://sourceforge.net/software/product/Azure-Computer-Vision/alternatives
 
 https://cloud.google.com/vision google's api
