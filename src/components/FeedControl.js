@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Card, Button, Alert } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
-import { Link, useNavigate } from "react-router-dom";
-import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import UploadImage from "./UploadImage";
 import PostList from "./PostList";
 
