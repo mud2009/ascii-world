@@ -1,35 +1,57 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Post from "./Post";
-import { useSelector } from 'react-redux'
-import { useFirestoreConnect, isLoaded } from 'react-redux-firebase'
+import { db } from "../firebase"
 
-function PostList(){
-  useFirestoreConnect([
-    { collection: 'posts' }
-  ]);
+export default function PostList(){
+  const [posts, setPosts] = useState([])
 
-  const posts = useSelector(state => state.firestore.ordered.posts)
+  const ref = db.collection("posts")
 
-  if (isLoaded(posts)){
-    return(
-      <React.Fragment>
-        {posts.map(post => {
-          return <Post 
-            imageName = {post.imageName}
-            timestamp = {post.timestamp}
-            key={post.imageName}
-            />
-        })}
-      </React.Fragment>
-    )  
-  } else {
-    return(
-      <React.Fragment>
-        <div>Loading....</div>
-      </React.Fragment>
-    )  
-
+  function getPosts() {
+    ref.onSnapshot((querySnapshot) => {
+      const items = [];
+      querySnapshot.forEach((doc) => {
+        items.push(doc.data());
+      });
+      setPosts(items);
+    });
   }
-}
 
-export default PostList;
+  useEffect(() => {
+    getPosts();
+  }, [])
+
+
+  return (
+    <div>
+      {
+        posts.map(x =>{
+          return(
+            <Post imageName={x.imageName} timestamp={x.timestamp} key={x.timestamp}/>
+          )
+        })
+      }
+    </div>
+  );
+
+  // if (isLoaded(posts)){
+  //   return(
+  //     <React.Fragment>
+  //       {posts.map(post => {
+  //         return <Post 
+  //           imageName = {post.imageName}
+  //           timestamp = {post.timestamp}
+  //           key={post.imageName}
+  //           />
+  //       })}
+  //     </React.Fragment>
+  //   )  
+  // } else {
+  //   return(
+  //     <React.Fragment>
+  //       <div>Loading....</div>
+  //     </React.Fragment>
+  //   )  
+
+  // }
+}
