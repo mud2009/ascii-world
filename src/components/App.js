@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "./Header";
 import MyNavbar from "./MyNavbar";
 import FeedControl from "./FeedControl";
 import LogIn from "./auth/LogIn"
