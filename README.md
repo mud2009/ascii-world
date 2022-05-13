@@ -52,6 +52,7 @@ This React web application allows users to upload and convert images to an ASCII
 
 ### Friday, 5/13
 8:00: Research
+9:00: Switch project from using Redux to Context.
 
 ## Provisional Component Tree Diagram
 ![Tree component diagram](./src/img/AsciiWorldDiagram.jpg)
