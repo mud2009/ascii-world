@@ -19,6 +19,8 @@ function Post(props){
         break;  
       case 'storage/unknown':
         break;
+      default:
+        break;
     }
   });
   
