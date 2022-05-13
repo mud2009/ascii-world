@@ -15,14 +15,12 @@ export default function UploadImage() {
 
   function handleUpload(e) {
     e.preventDefault();
-    const blah = convertToASCII(file)
-    console.log(blah);
-    // const path = `/images/${file.name}`;
-    // const ref = storage.ref(path);
-    // ref.put(file)
-    //   .then(() => setButtonText("Uploaded!"))
-    //   .then(() => db.collection("posts").add({imageName: `${file.name}`, timestamp: `${timestamp}`}));
-    // setFile(null);
+    const path = `/images/${file.name}`;
+    const ref = storage.ref(path);
+    ref.put(file)
+      .then(() => setButtonText("Uploaded!"))
+      .then(() => db.collection("posts").add({imageName: `${file.name}`, timestamp: `${timestamp}`}));
+    setFile(null);
   }
     return (
       <div>
