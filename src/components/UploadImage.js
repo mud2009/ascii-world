@@ -13,6 +13,8 @@ export default function UploadImage() {
     }
   }
 
+
+  
   function convertToASCII(input){
     const ASCIICharacters = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,\"^`'.".split("")
     const charLength = ASCIICharacters.length;
