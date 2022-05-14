@@ -22,6 +22,10 @@ https://www.youtube.com/watch?v=HeT-5RZgEQY
 
 https://reactnative.dev/docs/0.65/environment-setup -- emulator for react native
 
+https://sharp.pixelplumbing.com/
+
+https://dev.to/atndesign/i-coded-a-ascii-art-generator-in-node-js-10h6
+
 // function convertToASCII(input){
 //   const ASCIICharacters = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,\"^`'.".split("")
 //   const charLength = ASCIICharacters.length;
