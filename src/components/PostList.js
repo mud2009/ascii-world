@@ -25,7 +25,7 @@ export default function PostList(){
   return (
     <div>
       {
-        posts.map(x =>{
+        posts.sort((a,b) => b.timestamp - a.timestamp).map(x =>{
           return(
             <Post imageName={x.imageName} timestamp={x.timestamp} key={x.timestamp}/>
           )
