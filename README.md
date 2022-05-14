@@ -42,25 +42,25 @@ This React web application allows users to upload and convert images to an ASCII
 * 4:00: Research tutorials on converting images to ASCII.
 
 ### Friday, 5/6
-8:15: Review resources.
-9:15: Implement Firebase in project.
-10:00: Work on uploading images from site
-1:00: Work on displaying images
-2:00: Implement firestore to track information of images in cloud storage.
-3:00: Add redux
-4:00: work on displaying images
+* 8:15: Review resources.
+* 9:15: Implement Firebase in project.
+* 10:00: Work on uploading images from site
+* 1:00: Work on displaying images
+* 2:00: Implement firestore to track information of images in cloud storage.
+* 3:00: Add redux
+* 4:00: work on displaying images
 
 ### Friday, 5/13
-8:00: Research
-9:00: Switch project from using Redux to Context.
-9:30: Implement authentication.
-10:15: Research ASCII conversion.
-11:30: Try implementing different methods.
-1:00: Researching image processing libraries.
-2:00: Researching firebase functions.
-3:00: Setting up firebase functions.
-4:00: Running into issue with homebrew.
-4:50: Fixed issue!
+* 8:00: Research
+* 9:00: Switch project from using Redux to Context.
+* 9:30: Implement authentication.
+* 10:15: Research ASCII conversion.
+* 11:30: Try implementing different methods.
+* 1:00: Researching image processing libraries.
+* 2:00: Researching firebase functions.
+* 3:00: Setting up firebase functions.
+* 4:00: Running into issue with homebrew.
+* 4:50: Fixed issue!
 
 ## Provisional Component Tree Diagram
 ![Tree component diagram](./src/img/AsciiWorldDiagram.jpg)
