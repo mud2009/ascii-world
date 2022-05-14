@@ -6,7 +6,7 @@ admin.initializeApp()
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
 //
-exports.onFileChangeDemo = functions.storage.object().onFinalize((event) => {
+exports.onFileChangeDemo = functions.storage.object().onFinalize( async (event) => {
   console.log("This is the event" + event)
   return;
 });
