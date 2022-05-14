@@ -17,12 +17,11 @@ export default function FeedControl() {
       <>
         <Card>
           <Card.Body>
-            <h2 className="text-center mb-4">Profile</h2>
+            <h2 className="text-center mb-4">Log in to view ASCII World</h2>
             <Link className='btn btn-primary w-100 mt-3' to="/login">Log In</Link>
           </Card.Body>
         </Card>
       </>
-  
     )
 
   } else {
