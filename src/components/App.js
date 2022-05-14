@@ -14,7 +14,7 @@ function App() {
       <AuthProvider>
       <MyNavbar />
       <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: "80vh" }}>
-        <div className="w-100" style={{maxWidth: '500px'}}>
+        <div id="mainContainer" className="w-100" style={{maxWidth: '500px'}}>
           <Router>
             <Routes>
               <Route exact path="/" element={<FeedControl/>}/>

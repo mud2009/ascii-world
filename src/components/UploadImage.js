@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {storage, db} from '../firebase';
+import { Button, Form } from 'react-bootstrap';
 
 export default function UploadImage() {
   const [file, setFile] = useState(null);
@@ -25,8 +26,8 @@ export default function UploadImage() {
     return (
       <div>
         <form onSubmit={handleUpload}>
-          <input type="file" onChange={handleChange} />
-          <button disabled={!file}>{buttonText}</button>
+          <Form.Control className='mb-3' type="file" onChange={handleChange} />
+          <Button className='mb-3' type="submit" disabled={!file}>{buttonText}</Button>
         </form>
       </div>
     );
