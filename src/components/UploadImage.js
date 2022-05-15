@@ -20,7 +20,6 @@ export default function UploadImage() {
     const ref = storage.ref(path);
     ref.put(file)
       .then(() => setButtonText("Uploaded!"))
-      .then(() => db.collection("posts").add({imageName: `${file.name}`, timestamp: `${timestamp}`}));
     setFile(null);
   }
     return (
