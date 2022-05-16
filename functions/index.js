@@ -2,13 +2,12 @@ const functions = require('firebase-functions');
 const sharp = require('sharp');
 const admin = require('firebase-admin');
 const { Storage } = require('@google-cloud/storage') 
-const { tmpdir } = require('os')
+const os = require('os')
 const fs = require("fs-extra")
 
 admin.initializeApp()
 
 const path = require('path');
-const { join } = require('path');
 const gcs = new Storage();
 
 const ASCIICharacters = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|()1{}[]?-_+~<>i!lI;:,\"^`'. ".split("")
@@ -16,33 +15,35 @@ const charLength = ASCIICharacters.length;
 const interval = charLength / 256
 
 exports.addASCIIToFirestore = functions.storage.object().onFinalize(async (object) => {
-  const bucket = gcs.bucket(object.bucket); // The Storage bucket that contains the file.
+  const fileBucket = object.bucket; // The Storage bucket that contains the file.
   const filePath = object.name;
-  const fileName = object.name.replace("images/", "");
+  const fileName = path.basename(filePath);
   const contentType = object.contentType; // File content type.
   const firestoreRef = admin.firestore().collection("posts")
   const timestamp = Date.now();
   let asciiData = ""
-
-  const workingDir = join(tmpdir(), "temp")
-  const tmpFilePath = join(workingDir, "source.jpg")
 
   if(!contentType.startsWith("image/")){
     console.log("This is not an image")
     return null;
   }
 
-  await fs.ensureDir(workingDir);
+  const bucket = admin.storage().bucket(fileBucket)
+  const tempFilePath = path.join(os.tmpdir(), fileName)
 
-  await fileBucket.file(filePath).download({
-    destination: tmpFilePath
-  })
+  try {
+    const download = await bucket.file(filePath).download({destination: tempFilePath})
+    console.log('Download', JSON.stringify(download));
+    functions.logger.log('file has been downloaded to :', tempFilePath);
+  } catch (error) {
+    console.log('err at download bucket', error);
+  }
 
-  const sharpImg = await sharp(tmpFilePath);
+  const sharpImg = await sharp(tempFilePath);
 
   const greyConvert = async (input)=> {
     input.gamma().grayscale()
-    return greyImg
+    return input
   } 
 
   const resize = async (greyImg, newWidth = 500) => {
@@ -58,7 +59,7 @@ exports.addASCIIToFirestore = functions.storage.object().onFinalize(async (objec
     var newImg = await resized;
     const pixels = await newImg.raw().toBuffer();
     let characters = "";
-    pixels.foreach(pixel => {
+    pixels.forEach(pixel => {
       characters = characters + ASCIICharacters[Math.floor(pixel * interval)]
     })
     return characters;
@@ -75,9 +76,9 @@ exports.addASCIIToFirestore = functions.storage.object().onFinalize(async (objec
     firestoreRef.add({ timestamp: `${timestamp}`, imageName: `${fileName}`, asciiData: `${asciiData}` })
   }
 
-  main(sharpImg);
+  await main(sharpImg);
 
-  return fs.remove(workingDir);
+  return fs.unlinkSync(tempFilePath);
 });
 
 // function convertToASCII(input){
