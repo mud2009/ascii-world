@@ -10,7 +10,7 @@ admin.initializeApp()
 const path = require('path');
 const gcs = new Storage();
 
-const ASCIICharacters = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|()1{}[]?-_+~<>i!lI;:,\"^`'. ".split("")
+const ASCIICharacters = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|()1{}[]?-_+~<>i!lI;:,\"^`'.".split("")
 const charLength = ASCIICharacters.length;
 const interval = charLength / 256
 
@@ -33,8 +33,6 @@ exports.addASCIIToFirestore = functions.storage.object().onFinalize(async (objec
 
   try {
     const download = await bucket.file(filePath).download({destination: tempFilePath})
-    console.log('Download', JSON.stringify(download));
-    functions.logger.log('file has been downloaded to :', tempFilePath);
   } catch (error) {
     console.log('err at download bucket', error);
   }
@@ -46,7 +44,7 @@ exports.addASCIIToFirestore = functions.storage.object().onFinalize(async (objec
     return input
   } 
 
-  const resize = async (greyImg, newWidth = 500) => {
+  const resize = async (greyImg, newWidth = 50) => {
     const bw = await greyImg;
     const size = await bw.metadata();
     const ratio = size.width / size.height;
@@ -66,7 +64,7 @@ exports.addASCIIToFirestore = functions.storage.object().onFinalize(async (objec
   }
 
   const main = async (input) => {
-    let newWidth = 500;
+    let newWidth = 50;
     const newImgData = await toASCII(resize(greyConvert(input)));
     const pixels = newImgData.length;
     for (let i = 0; i < pixels; i += newWidth){
@@ -78,61 +76,7 @@ exports.addASCIIToFirestore = functions.storage.object().onFinalize(async (objec
 
   await main(sharpImg);
 
+  // await admin.storage().bucket().file(filePath).delete();
+
   return fs.unlinkSync(tempFilePath);
 });
-
-// function convertToASCII(input){
-
-//   // const convertToGrey = async (colorImage) => {
-//   //   const bwImg =  colorImage.gamma().greyscale();
-//   //   return bwImg
-//   // }
-//   const resize = async (bw, newWidth = 500) => {
-//     const blackAndWhite = await bw;
-//     const size = await blackAndWhite.metadata();
-//     const ratio = size.width / size.height;
-//     const newHeight = parseInt(newWidth * ratio);
-//     const resized = await blackAndWhite.resize(newWidth, newHeight, { fit: "outside" })
-//     return resized;
-//   }
-//   const pixelToASCII = async img => {
-//     var newImg = await img;
-//     const pixels = await newImg.raw().toBuffer();
-//     const characters = "";
-//     pixels.foreach(pixel => {
-//       characters = characters + ASCIICharacters[Math.floor(pixel * interval)]
-//     })
-//     return characters;
-//   }
-//   const main = async (newWidth = 500) => {
-//     const newImgData = await pixelToASCII(resize(input));
-//     const pixels = newImgData.length;
-//     let ASCII = "";
-//     for (let i = 0; i < pixels; i += newWidth){
-//       let line = newImgData.split("").slice(i, i + newWidth);
-//       ASCII = ASCII + "\n" + line;
-//     }
-//   }
-//   main()
-// }
-
-  // const fileName = path.basename(filePath);
-
-  // const bucket = gcs.bucket(fileBucket);
-
-  // const metadata = {
-  //   contentType: contentType,
-  // };
-
-  // const thumbFileName = `thumb_${fileName}`;
-  // const thumbFilePath = path.join(path.dirname(filePath), thumbFileName);
-
-  // const thumbnailUploadStream = bucket.file(thumbFilePath).createWriteStream({metadata});
-
-  // const pipeline = sharp();
-  // pipeline.resize(THUMB_MAX_WIDTH, THUMB_MAX_HEIGHT).pipe(thumbnailUploadStream);
-
-  // bucket.file(filePath).createReadStream().pipe(pipeline);
-
-  // return new Promise((resolve, reject) =>
-  //     thumbnailUploadStream.on('finish', resolve).on('error', reject));
