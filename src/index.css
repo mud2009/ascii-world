@@ -24,3 +24,8 @@ code {
 img{
   max-width: 500px;
 }
+
+pre{
+  font-size: 2px !important;
+  font-family: 'Courier New', Courier, monospace;
+}
