@@ -67,16 +67,17 @@ exports.addASCIIToFirestore = functions.storage.object().onFinalize(async (objec
     let newWidth = 150;
     const newImgData = await toASCII(resize(greyConvert(input)));
     const pixels = newImgData.length;
+    // COMMAS SOMEWHERE BELOW HERE
     for (let i = 0; i < pixels; i += newWidth){
       let line = newImgData.split("").slice(i, i + newWidth);
-      asciiData = asciiData + "\n" + line
+      asciiData = asciiData + "\n" + line.join("")
     }
     firestoreRef.add({ timestamp: `${timestamp}`, imageName: `${fileName}`, asciiData: `${asciiData}` })
   }
 
   await main(sharpImg);
 
-  // await admin.storage().bucket().file(filePath).delete();
+  await admin.storage().bucket().file(filePath).delete();
 
   return fs.unlinkSync(tempFilePath);
 });
