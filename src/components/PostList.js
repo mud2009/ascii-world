@@ -19,6 +19,7 @@ export default function PostList(){
 
   useEffect(() => {
     getPosts();
+    // eslint-disable-next-line
   }, [])
 
 
