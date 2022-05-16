@@ -8,9 +8,8 @@ const fs = require("fs-extra")
 admin.initializeApp()
 
 const path = require('path');
-const gcs = new Storage();
 
-const ASCIICharacters = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|()1{}[]?-_+~<>i!lI;:,\"^`'.".split("")
+const ASCIICharacters = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. ".split("")
 const charLength = ASCIICharacters.length;
 const interval = charLength / 256
 
@@ -44,27 +43,28 @@ exports.addASCIIToFirestore = functions.storage.object().onFinalize(async (objec
     return input
   } 
 
-  const resize = async (greyImg, newWidth = 50) => {
+  const resize = async (greyImg, newWidth = 150) => {
     const bw = await greyImg;
     const size = await bw.metadata();
     const ratio = size.width / size.height;
     const newHeight = parseInt(newWidth * ratio);
-    const resized = await bw.resize(newWidth, newHeight, { fit: "outside"});
+    const resized = await bw.resize(newWidth, newHeight, { fit: "inside"});
     return resized;
   }
 
   const toASCII = async (resized) => {
     var newImg = await resized;
     const pixels = await newImg.raw().toBuffer();
-    let characters = "";
+    let characters = [];
     pixels.forEach(pixel => {
-      characters = characters + ASCIICharacters[Math.floor(pixel * interval)]
+      // characters = characters + ASCIICharacters[Math.floor(pixel * interval)]
+      characters.push(ASCIICharacters[Math.floor(pixel * interval)])
     })
-    return characters;
+    return characters.join("");
   }
 
   const main = async (input) => {
-    let newWidth = 50;
+    let newWidth = 150;
     const newImgData = await toASCII(resize(greyConvert(input)));
     const pixels = newImgData.length;
     for (let i = 0; i < pixels; i += newWidth){
