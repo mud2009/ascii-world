@@ -29,6 +29,9 @@ function Post(props){
       <Card.Body>
         <img className="center-block" id={`myimg${props.imageName}`} alt={`${props.imageName}`}/>
         <h3>Name: {props.imageName} - Time: {props.timestamp}</h3>
+        <pre>
+          {props.asciiData}
+        </pre>
       </Card.Body>
     </Card>
   )
@@ -36,7 +39,8 @@ function Post(props){
 
 Post.propTypes = {
   imageName: PropTypes.string,
-  timestamp: PropTypes.string
+  timestamp: PropTypes.string,
+  asciiData: PropTypes.string
 }
 
 export default Post;
