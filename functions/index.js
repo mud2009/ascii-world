@@ -57,7 +57,6 @@ exports.addASCIIToFirestore = functions.storage.object().onFinalize(async (objec
     const pixels = await newImg.raw().toBuffer();
     let characters = [];
     pixels.forEach(pixel => {
-      // characters = characters + ASCIICharacters[Math.floor(pixel * interval)]
       characters.push(ASCIICharacters[Math.floor(pixel * interval)])
     })
     return characters.join("");
@@ -67,7 +66,6 @@ exports.addASCIIToFirestore = functions.storage.object().onFinalize(async (objec
     let newWidth = 150;
     const newImgData = await toASCII(resize(greyConvert(input)));
     const pixels = newImgData.length;
-    // COMMAS SOMEWHERE BELOW HERE
     for (let i = 0; i < pixels; i += newWidth){
       let line = newImgData.split("").slice(i, i + newWidth);
       asciiData = asciiData + "\n" + line.join("")
@@ -77,7 +75,8 @@ exports.addASCIIToFirestore = functions.storage.object().onFinalize(async (objec
 
   await main(sharpImg);
 
-  await admin.storage().bucket().file(filePath).delete();
+  // don't forget to put this back in 
+  // await admin.storage().bucket().file(filePath).delete();
 
   return fs.unlinkSync(tempFilePath);
 });
