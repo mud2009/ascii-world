@@ -26,6 +26,7 @@ img{
 }
 
 pre{
-  font-size: 2px !important;
-  font-family: 'Courier New', Courier, monospace;
+  font-size: 5px !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  line-height: 5px !important;
 }
