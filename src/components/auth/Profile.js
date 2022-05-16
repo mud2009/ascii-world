@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Card, Button, Alert } from 'react-bootstrap'
 import { useAuth } from '../../contexts/AuthContext'
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function Profile() {
   const { currentUser, logOut } = useAuth();
