@@ -27,6 +27,7 @@ img{
 
 pre{
   font-size: 5px !important;
+  letter-spacing: 1px !important;
   font-family: 'Courier New', Courier, monospace !important;
-  line-height: 5px !important;
+  line-height: 4px !important;
 }
