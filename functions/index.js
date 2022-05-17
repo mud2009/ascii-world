@@ -56,7 +56,7 @@ exports.addASCIIToFirestore = functions.storage.object().onFinalize(async (objec
     return input
   } 
 
-  const resize = async (greyImg, newWidth = 150) => {
+  const resize = async (greyImg, newWidth = 200) => {
     const bw = await greyImg;
     const size = await bw.metadata();
     const ratio = size.width / size.height;
@@ -76,7 +76,7 @@ exports.addASCIIToFirestore = functions.storage.object().onFinalize(async (objec
   }
 
   const main = async (input) => {
-    let newWidth = 150;
+    let newWidth = 200;
     const newImgData = await toASCII(resize(greyConvert(input)));
     const pixels = newImgData.length;
     for (let i = 0; i < pixels; i += newWidth){
