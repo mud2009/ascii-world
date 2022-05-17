@@ -26,11 +26,9 @@ export default function Profile() {
           <p><strong>Email:</strong> {currentUser.email}</p>
           <p><strong>Username:</strong> {currentUser.displayName}</p>
           <Link to="../update-profile" className='btn btn-primary w-100 mt-3'>Update Profile</Link>
+          <Button className='btn btn-primary w-100 mt-3' onClick={handleLogOut}>Log Out</Button>
         </Card.Body>
       </Card>
-      <div className="w-100 text-center mt-2">
-        <Button variant='link' onClick={handleLogOut}>Log Out</Button>
-      </div>
     </>
   )
 }
