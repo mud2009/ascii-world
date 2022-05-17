@@ -10,7 +10,7 @@ function App() {
       <AuthProvider>
       <MyNavbar />
       <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: "80vh" }}>
-        <div id="mainContainer" className="w-100" style={{maxWidth: '750px'}}>
+        <div id="mainContainer" className="w-100" style={{maxWidth: '625px'}}>
           <AppRoutes/>
         </div>
       </Container>
