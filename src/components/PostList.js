@@ -28,7 +28,7 @@ export default function PostList(){
       {
         posts.sort((a,b) => b.timestamp - a.timestamp).map(x =>{
           return(
-            <Post imageName={x.imageName} timestamp={x.timestamp} asciiData={x.asciiData} key={x.timestamp}/>
+            <Post imageName={x.imageName} timestamp={x.timestamp} asciiData={x.asciiData} user={x.user} key={x.timestamp}/>
           )
         })
       }
