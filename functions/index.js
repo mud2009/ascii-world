@@ -22,6 +22,7 @@ exports.addASCIIToFirestore = functions.storage.object().onFinalize(async (objec
   const timestamp = Date.now();
   let asciiData = ""
   let uploadUser = ""
+  let uploadEmail = ""
 
 
   if(!contentType.startsWith("image/")){
@@ -34,6 +35,7 @@ exports.addASCIIToFirestore = functions.storage.object().onFinalize(async (objec
 
   myFileRef.getMetadata().then(x => {
     uploadUser = x[0].metadata["user"]
+    uploadEmail = x[0].metadata["email"]
     return null
   }).catch(error => {
     console.log("metadata error =" + error)
@@ -81,13 +83,12 @@ exports.addASCIIToFirestore = functions.storage.object().onFinalize(async (objec
       let line = newImgData.split("").slice(i, i + newWidth);
       asciiData = asciiData + "\n" + line.join("")
     }
-    firestoreRef.add({ timestamp: `${timestamp}`, imageName: `${fileName}`, asciiData: `${asciiData}`, user: `${uploadUser}` })
+    firestoreRef.add({ timestamp: `${timestamp}`, imageName: `${fileName}`, asciiData: `${asciiData}`, user: `${uploadUser}`, email: `${uploadEmail}` })
   }
 
   await main(sharpImg);
 
-  // don't forget to put this back in 
-  // await admin.storage().bucket().file(filePath).delete();
+  await admin.storage().bucket().file(filePath).delete();
 
   return fs.unlinkSync(tempFilePath);
 });
