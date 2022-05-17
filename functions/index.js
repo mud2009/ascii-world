@@ -33,7 +33,7 @@ exports.addASCIIToFirestore = functions.storage.object().onFinalize(async (objec
   const myFileRef = bucket.file(filePath)
 
   myFileRef.getMetadata().then(x => {
-    uploadUser = x.customMetadata["user"]
+    uploadUser = x[0].metadata["user"]
     console.log(uploadUser)
     return null
   }).catch(error => {
@@ -51,7 +51,7 @@ exports.addASCIIToFirestore = functions.storage.object().onFinalize(async (objec
   const sharpImg = await sharp(tempFilePath);
 
   const greyConvert = async (input)=> {
-    input.gamma().grayscale()
+    input.gamma().grayscale().blur();
     return input
   } 
 
