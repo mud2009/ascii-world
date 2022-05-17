@@ -51,7 +51,7 @@ exports.addASCIIToFirestore = functions.storage.object().onFinalize(async (objec
   const sharpImg = await sharp(tempFilePath);
 
   const greyConvert = async (input)=> {
-    input.gamma().grayscale().blur();
+    input.gamma().grayscale().normalise();
     return input
   } 
 
