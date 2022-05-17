@@ -32,7 +32,7 @@ function Post(props){
         <pre>
           {props.asciiData}
         </pre>
-        <h3>Name: {props.imageName} - Time: {props.timestamp}</h3>
+        <h5>{props.imageName}</h5>
       </Card.Body>
     </Card>
   )
