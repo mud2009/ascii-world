@@ -9,7 +9,7 @@ admin.initializeApp()
 
 const path = require('path');
 
-const ASCIICharacters = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. ".split("")
+const ASCIICharacters = " .:-=+*#%@".split("").reverse();
 const charLength = ASCIICharacters.length;
 const interval = charLength / 256
 
@@ -34,7 +34,6 @@ exports.addASCIIToFirestore = functions.storage.object().onFinalize(async (objec
 
   myFileRef.getMetadata().then(x => {
     uploadUser = x[0].metadata["user"]
-    console.log(uploadUser)
     return null
   }).catch(error => {
     console.log("metadata error =" + error)
@@ -59,8 +58,8 @@ exports.addASCIIToFirestore = functions.storage.object().onFinalize(async (objec
     const bw = await greyImg;
     const size = await bw.metadata();
     const ratio = size.width / size.height;
-    const newHeight = parseInt(newWidth * ratio);
-    const resized = await bw.resize(newWidth, newHeight, { fit: "inside"});
+    const newHeight = parseInt(newWidth / ratio);
+    const resized = await bw.resize(newWidth, newHeight, { fit: "fill"});
     return resized;
   }
 
