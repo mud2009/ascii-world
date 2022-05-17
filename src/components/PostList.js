@@ -26,7 +26,7 @@ export default function PostList(){
   if (posts.length === 0){
     return(
       <>
-        <h3>Currently no posts</h3>
+        <h3>Loading. . .</h3>
       </>
     )
   }
