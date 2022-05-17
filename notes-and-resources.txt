@@ -10,6 +10,8 @@
 
 -look into likes
 
+-add ability to have user look at their specific posts
+
 https://sourceforge.net/software/product/Azure-Computer-Vision/alternatives
 
 https://cloud.google.com/vision google's api
