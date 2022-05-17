@@ -21,6 +21,8 @@ exports.addASCIIToFirestore = functions.storage.object().onFinalize(async (objec
   const firestoreRef = admin.firestore().collection("posts")
   const timestamp = Date.now();
   let asciiData = ""
+  let uploadUser = ""
+
 
   if(!contentType.startsWith("image/")){
     console.log("This is not an image")
@@ -28,6 +30,16 @@ exports.addASCIIToFirestore = functions.storage.object().onFinalize(async (objec
   }
 
   const bucket = admin.storage().bucket(fileBucket)
+  const myFileRef = bucket.file(filePath)
+
+  myFileRef.getMetadata().then(x => {
+    uploadUser = x.customMetadata["user"]
+    console.log(uploadUser)
+    return null
+  }).catch(error => {
+    console.log("metadata error =" + error)
+  })
+
   const tempFilePath = path.join(os.tmpdir(), fileName)
 
   try {
@@ -70,7 +82,7 @@ exports.addASCIIToFirestore = functions.storage.object().onFinalize(async (objec
       let line = newImgData.split("").slice(i, i + newWidth);
       asciiData = asciiData + "\n" + line.join("")
     }
-    firestoreRef.add({ timestamp: `${timestamp}`, imageName: `${fileName}`, asciiData: `${asciiData}` })
+    firestoreRef.add({ timestamp: `${timestamp}`, imageName: `${fileName}`, asciiData: `${asciiData}`, user: `${uploadUser}` })
   }
 
   await main(sharpImg);
