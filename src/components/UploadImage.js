@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { storage } from '../firebase';
 import { Button, Form } from 'react-bootstrap';
+import { useAuth } from '../contexts/AuthContext';
 
 export default function UploadImage() {
   const [file, setFile] = useState(null);
   const [buttonText, setButtonText ] = useState("Upload Image");
+  const { currentUser } = useAuth()
 
   function handleChange(e) {
     if (e.target.files[0]){
@@ -16,8 +18,13 @@ export default function UploadImage() {
   function handleUpload(e) {
     e.preventDefault();
     const path = `/images/${file.name}`;
+    var metadata = {
+      customMetadata: {
+        "user" : `${currentUser.displayName}`
+      }
+    }
     const ref = storage.ref(path);
-    ref.put(file)
+    ref.put(file, metadata)
       .then(() => setButtonText("Uploaded!"))
     setFile(null);
   }
