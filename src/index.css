@@ -1,8 +1,6 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family:'Times New Roman', Times, serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -26,13 +24,17 @@ img{
 }
 
 pre{
-  font-size: 5px !important;
+  font-size: 7px !important;
   letter-spacing: 1px !important;
   font-family: 'Courier New', Courier, monospace !important;
-  line-height: 4px !important;
+  line-height: 6px !important;
   overflow: visible !important;
 }
 
 .navbar-light .navbar-brand {
   margin-left: .5em;
+}
+
+#poster{
+  text-align:  left !important;
 }
