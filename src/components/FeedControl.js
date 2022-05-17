@@ -1,17 +1,12 @@
-import React, { useState } from "react";
-import { Card, Button } from "react-bootstrap";
+import React from "react";
+import { Card } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { Link } from "react-router-dom";
-import UploadImage from "./UploadImage";
 import PostList from "./PostList";
 
 export default function FeedControl() {
-  const [ uploadVisible, setUploadVisible ] = useState(false)
   const { currentUser } = useAuth();
   
-  function handleClick(){
-    setUploadVisible(!uploadVisible)
-  }
   if(!currentUser){
     return (
       <>
@@ -25,14 +20,6 @@ export default function FeedControl() {
     )
 
   } else {
-    if (uploadVisible){
-      return(
-        <React.Fragment>
-          <UploadImage/>
-        </React.Fragment>
-  
-      )
-    } else {
       return(
         <React.Fragment>
           <PostList/>
@@ -40,4 +27,3 @@ export default function FeedControl() {
       )
     }  
   }
-}
