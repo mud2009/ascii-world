@@ -31,7 +31,7 @@ function Post(props){
         <pre>
           {props.asciiData}
         </pre>
-        <h3>Name: {props.imageName} - Time: {props.timestamp}</h3>
+        <h3>Name: {props.imageName} - Time: {props.timestamp} Posted by: {props.user}</h3>
       </Card.Body>
     </Card>
   )
@@ -40,7 +40,8 @@ function Post(props){
 Post.propTypes = {
   imageName: PropTypes.string,
   timestamp: PropTypes.string,
-  asciiData: PropTypes.string
+  asciiData: PropTypes.string,
+  user: PropTypes.string
 }
 
 export default Post;
