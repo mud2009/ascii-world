@@ -27,7 +27,8 @@ export default function UploadImage() {
     const path = `/images/${file.name}`;
     var metadata = {
       customMetadata: {
-        "user" : `${uploadedBy.current}`
+        "user" : `${uploadedBy.current}`,
+        "email" : `${currentUser.email}`
       }
     }
     const ref = storage.ref(path);
