@@ -38,3 +38,7 @@ pre{
 #poster{
   text-align:  left !important;
 }
+
+.card{
+  border-radius: 0 !important
+}
