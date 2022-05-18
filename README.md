@@ -62,9 +62,6 @@ This React web application allows users to upload and convert images to an ASCII
 * 4:00: Running into issue with homebrew.
 * 4:50: Fixed issue!
 
-## Provisional Component Tree Diagram
-![Tree component diagram](./src/img/AsciiWorldDiagram.jpg)
-
 ## License
 
 [MIT](https://opensource.org/licenses/MIT)
