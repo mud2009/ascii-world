@@ -31,3 +31,5 @@ https://dev.to/atndesign/i-coded-a-ascii-art-generator-in-node-js-10h6
 https://github.com/jpetitcolas/ascii-art-converter/blob/master/src/index.js
 
 https://firebase.google.com/docs/firestore/solutions/counters
+
+https://fireblog.io/post/Mi1q1LEWkwQevqkgnPPm/firestore-counters-everything-there-is-to-know
