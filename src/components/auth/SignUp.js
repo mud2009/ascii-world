@@ -35,15 +35,15 @@ export default function SignUp(){
           <h2 className="text-center mb-4">Sign Up</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
-            <Form.Group id="email">
+            <Form.Group className="mb-3" id="email">
               <Form.Label>Email</Form.Label>
               <Form.Control type="email" required ref={emailRef}></Form.Control>
             </Form.Group>
-            <Form.Group id="password">
+            <Form.Group className="mb-3" id="password">
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" required ref={passRef}></Form.Control>
             </Form.Group>
-            <Form.Group id="confirmPassword">
+            <Form.Group className="mb-3" id="confirmPassword">
               <Form.Label>Confirm Password</Form.Label>
               <Form.Control type="password" required ref={confirmPassRef}></Form.Control>
             </Form.Group>
