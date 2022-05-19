@@ -10,6 +10,7 @@
 
 # production
 /build
+/.firebase
 
 # misc
 firebase-debug.log
