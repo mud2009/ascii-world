@@ -12,10 +12,15 @@
 * Bootstrap
 * React-Bootstrap
 * Node.js
+* Firebase Authentication
+* Firebase Firestore
+* Firebase Storage
+* Firebase Functions
+* Sharp JS
 
 ## Description
 
-This React web application allows users to upload and convert images to an ASCII art format and post those to the site's feed. Additional functionality will include commenting and liking other users' posts.
+This React web application allows users to upload and convert images to an ASCII art format and post those to the site's feed. Additional functionality will include commenting and liking other users' posts. When a user uploads an image to Firebase Storage, a Firebase Cloud Function is triggered which downloads the image from Firebase Storage, and using Sharp JS, converts the image into a greyscale image, resizes it, and reads each pixel's value. The individual pixel's value is then compared to a string of ASCII characters that are sorted from dark to light. The corresponding character is pushed to an array of other characters in order, joined into a string, and then broken into rows with "\n". This string is then pushed to Firestore along with the uploader's username, email, and a timestamp for posting. This collection of string is then called and displayed in the PostList component.
 
 ## Setup/Installation Requirements
 
