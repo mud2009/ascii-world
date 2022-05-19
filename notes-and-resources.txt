@@ -14,6 +14,10 @@
 
 -email verification before use?
 
+-email/password retrieval
+
+-load on scroll
+
 https://sourceforge.net/software/product/Azure-Computer-Vision/alternatives
 
 https://cloud.google.com/vision google's api
