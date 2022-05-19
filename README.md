@@ -30,6 +30,11 @@ This React web application allows users to upload and convert images to an ASCII
 * To run the application, run `npm run start`.
 * Navigate to `http://localhost:3000/` in your browser.
 
+## Link to site
+
+* ASCII World is accessible [here](https://ascii-world.web.app/).
+
+
 ## Known Bugs
 
 * None so far.
