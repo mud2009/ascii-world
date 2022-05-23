@@ -18,6 +18,8 @@
 
 -load on scroll
 
+-sign in on sign up
+
 https://sourceforge.net/software/product/Azure-Computer-Vision/alternatives
 
 https://cloud.google.com/vision google's api
