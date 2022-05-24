@@ -17,7 +17,7 @@ export default function AppRoutes() {
       <Route exact path="/" element={<FeedControl/>}/>
       <Route path="/upload" element={<UploadImage/>}/>
       <Route path="/signup" element={<SignUp/>}/>
-      <Route path="/login" element={<LogIn/>}/>
+      <Route path="/login" element={currentUser ? <FeedControl/> : <LogIn/>}/>
       <Route path="/profile" element={currentUser ? <Profile/> : <LogIn/>}/>
       <Route path="/update-profile" element={currentUser ? <UpdateProfile/> : <LogIn/>}/>
     </Routes>
