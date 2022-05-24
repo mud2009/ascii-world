@@ -7,7 +7,7 @@ export default function SignUp(){
   const emailRef = useRef();
   const passRef = useRef();
   const confirmPassRef = useRef();
-  const { signUp } = useAuth()
+  const { signUp, logIn } = useAuth()
   const [error, setError ] = useState("")
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate();
@@ -21,7 +21,8 @@ export default function SignUp(){
       setError('')
       setLoading(true)
       await signUp(emailRef.current.value, passRef.current.value)
-      navigate("/login")
+      await logIn(emailRef.current.value, passRef.current.value)
+      navigate("/")
     } catch {
       setError("Failed to create account")
     }
